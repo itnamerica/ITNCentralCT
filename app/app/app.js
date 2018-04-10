@@ -108,10 +108,10 @@ myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider){
         url: '/draft',
         templateUrl: viewsPath + 'draft.html'
       })
-      .state('wildcard', {
-        url: '/*',
-        templateUrl: viewsPath + 'home.html'
-      })
+      // .state('wildcard', {
+      //   url: '/*',
+      //   templateUrl: viewsPath + 'home.html'
+      // })
 
   // default fall back route
   $urlRouterProvider.otherwise('/');
@@ -128,6 +128,7 @@ myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider){
     function($rootScope, $location, $window, $state, $stateParams) {      
       $rootScope.$on('$routeChangeSuccess',
         function(event) {
+          console.log('changed route1');
           if (!$window.ga) {
             return;
           }
@@ -209,6 +210,7 @@ myApp.controller('MainController', ['$scope', '$transitions','$http', '$anchorSc
   
 
   $transitions.onSuccess({}, function(transition){
+    console.log('changed route2');
       $scope.resetFormData();
       if (transition.from().name === 'keyword-pages'){
         angular.element(document).ready(function () {
