@@ -461,6 +461,15 @@ nav .dropdown-menu li.divider{
 
 .news .news-content ul li a{color: #b95856;}
 
+.newsletters {
+  padding: 5%;
+  background: #c7dfe4;
+  border: 5px solid #399eaa;
+  border-radius: 5px;
+  line-height: 1.7;
+  font-size: 20px;
+}
+.newsletters ul li{margin-top:10px}
 
 .contact .first-hero {
   background-image: url('../images/dark/spanish-woman.png');
