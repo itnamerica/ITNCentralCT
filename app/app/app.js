@@ -84,15 +84,10 @@ myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider){
       .state('volunteer-app', {
         url: '/volunteer-app',
         templateUrl: viewsPath + 'volunteer-app.html'
-            // resolve: {
-            //     formData: function ($scope) {
-            //         $scope.formData = {};
-            //     },
-            //   }
       })
       .state('newsletters', {
         url: '/newsletters',
-        templateUrl: viewsPath + 'newsletter.html',
+        templateUrl: viewsPath + 'newsletters.html',
         params: {
           anchor: null
         }
