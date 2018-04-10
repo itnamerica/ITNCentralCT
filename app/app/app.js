@@ -139,7 +139,7 @@ myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider){
     }
   ]);
 
-myApp.controller('MainController', ['$scope', '$transitions','$http', '$anchorScroll', '$location', '$stateParams', '$timeout', '$state', '$rootScope', function ($scope, $transitions, $http, $anchorScroll, $location, $stateParams, $timeout, $state, $rootScope)  {
+myApp.controller('MainController', ['$scope', '$transitions','$http', '$anchorScroll', '$location', '$stateParams', '$timeout', '$state', '$rootScope', '$window', function ($scope, $transitions, $http, $anchorScroll, $location, $stateParams, $timeout, $state, $rootScope, $window)  {
   console.log('inside main controller');
 
   $scope.assetsPath = "assets";
@@ -209,8 +209,7 @@ myApp.controller('MainController', ['$scope', '$transitions','$http', '$anchorSc
   ];
   
 
-  $transitions.onSuccess({}, function(transition){
-    console.log('changed route2');
+  $transitions.onSuccess({}, function(transition){    
       $scope.resetFormData();
       if (transition.from().name === 'keyword-pages'){
         angular.element(document).ready(function () {
@@ -221,6 +220,12 @@ myApp.controller('MainController', ['$scope', '$transitions','$http', '$anchorSc
         });
       }
   });
+  
+  $scope.redirectToURL = function(url){
+    console.log('inside redirectTo, url is ', url);
+    $window.location.href = url;
+    
+  }
   
   $scope.scrollTo = function(id) {
     var old = $location.hash();
