@@ -33,7 +33,7 @@ app.post('/sendmail', function(req, res){
         to: req.body.to, // list of receivers
         subject: req.body.subject, // Subject line   
         text: JSON.stringify(req.body.text), // plain text body
-        bcc: 'info@itnlanier.org',
+        bcc: 'info@itncentralct.org',
         attachments: [{path: req.body.pdf}]
     };
   }
@@ -44,7 +44,7 @@ app.post('/sendmail', function(req, res){
         to: req.body.to, // list of receivers
         subject: req.body.subject, // Subject line   
         text: JSON.stringify(req.body.text), // plain text body
-        bcc: 'info@itnlanier.org',
+        bcc: 'info@itncentralct.org',
         html: req.body.html // html body
     };
   } else {
@@ -54,7 +54,7 @@ app.post('/sendmail', function(req, res){
         to: req.body.to, // list of receivers
         subject: req.body.subject, // Subject line   
         text: JSON.stringify(req.body.text), // plain text body
-        bcc: 'info@itnlanier.org',
+        bcc: 'info@itncentralct.org',
     };
   }
 
