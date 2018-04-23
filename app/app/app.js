@@ -219,6 +219,9 @@ myApp.controller('MainController', ['$scope', '$transitions','$http', '$anchorSc
           // $scope.keyword = '';
         });
       }
+      if (!$stateParams.anchor) {
+        $scope.scrollToTop();
+      }
   });
   
   $scope.redirectToURL = function(url){
