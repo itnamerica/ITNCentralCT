@@ -3,7 +3,7 @@ var myApp = angular.module('myApp', ['ui.router', 'ngAnimate']);
 myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider){
   console.log('inside of config block');
   var viewsPath = "views/";
-  if (location.hostname === "localhost"){
+  if (location.host === 'localhost:8080'){
     viewsPath = "app/views/";
   };
 
@@ -42,7 +42,7 @@ myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider){
         templateUrl: viewsPath + 'faq.html'
       })
       .state('member-app', {
-        url: '/member-application',
+        url: '/member-app',
         templateUrl: viewsPath + 'member-app.html'
       })
       .state('member-programs', {
@@ -145,7 +145,7 @@ myApp.controller('MainController', ['$scope', '$transitions','$http', '$anchorSc
   $scope.assetsPath = "assets";
   $scope.viewsPath = "../views";
   
-  if (location.hostname === "localhost"){
+  if (location.host === 'localhost:8080'){
     console.log("localhost server, staging env");
     $scope.assetsPath = "app/assets";
     $scope.viewsPath = "../app/views";
@@ -225,9 +225,7 @@ myApp.controller('MainController', ['$scope', '$transitions','$http', '$anchorSc
   });
   
   $scope.redirectToURL = function(url){
-    console.log('inside redirectTo, url is ', url);
-    $window.location.href = url;
-    
+    $window.open(url, '_blank');
   }
   
   $scope.scrollTo = function(id) {
