@@ -16,7 +16,9 @@
         <thead>
           <tr>
             <th>Count</th>
-            <th>Date Submited</th>
+            <th ng-click="sort('date')">Date Submited
+              <span class="glyphicon sort-icon" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+            </th>
             <th ng-click="sort('riderName')">Rider Name
               <span class="glyphicon sort-icon" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
             </th>
@@ -26,22 +28,26 @@
           </tr>
         </thead>
         <tbody>
-          <tr dir-paginate="rider in memberFormData|orderBy:sortKey:reverse|filter:filterTable|itemsPerPage:10" pagination-id="membership">
+          <tr dir-paginate="rider in memberFormData|orderBy:sortKey:reverse|filter:filterTable|itemsPerPage:10|reverse" pagination-id="membership">
             <td>{{memberFormData.length - $index}}</td>
             <td>{{rider | timestamp | date}}</td>
             <td>{{rider.riderName}}</td>
             <td>{{rider.streetAddress}}, {{rider.city}}, {{rider.state}} {{rider.zip}}</td>
             <td>{{rider.primaryPhone}}</td>
             <td>
-              <button type="button" class="btn btn-danger btn-sm" ng-click="deleteForm('memberapp', rider)" data-toggle="tooltip" title="Delete Form">
-               <span class="glyphicon glyphicon-trash"></span>
-             </button>
              <a ui-sref="view-form({formObj: {{rider}}, formType: 'memberapp'})" class="btn btn-info btn-sm" data-toggle="tooltip" title="View details">
                <span class="glyphicon glyphicon-eye-open"></span>
              </a>
              <button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" title="Download PDF" ng-click="base64ToPDF('memberapp', rider)">
                <span class="glyphicon glyphicon-download"></span>
              </button>
+             <br>
+             <button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" title="Generate new PDF" ng-click="regenerateMultiPagePDF(rider, 'memberapp')">
+               <span class="glyphicon glyphicon-repeat"></span>
+             </button>
+             <button type="button" class="btn btn-danger btn-sm" ng-click="askBeforeDelete('memberapp', rider)" data-toggle="tooltip" title="Delete Form">
+              <span class="glyphicon glyphicon-trash"></span>
+            </button>
             </td>
           </tr>
         </tbody>
@@ -62,7 +68,9 @@
         <thead>
           <tr>
             <th>Count</th>
-            <th>Date Submited</th>
+            <th ng-click="sort('date')">Date Submited
+              <span class="glyphicon sort-icon" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+            </th>
             <th ng-click="sort('riderName')">Rider Name
               <span class="glyphicon sort-icon" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
             </th>
@@ -72,22 +80,26 @@
           </tr>
         </thead>
         <tbody>
-          <tr dir-paginate="driver in volunteerFormData|orderBy:sortKey:reverse|filter:filterTable2|itemsPerPage:10" pagination-id="volunteer">
+          <tr dir-paginate="driver in volunteerFormData|orderBy:sortKey:reverse|filter:filterTable2|itemsPerPage:10|reverse" pagination-id="volunteer">
             <td>{{volunteerFormData.length - $index}}</td>
             <td>{{driver | timestamp | date}}</td>
             <td>{{driver.riderName}}</td>
             <td>{{driver.streetAddress}}, {{driver.city}}, {{driver.state}} {{driver.zip}}</td>
             <td>{{driver.homePhone}}</td>
             <td>
-              <button type="button" class="btn btn-danger btn-sm" ng-click="deleteForm('volunteerapp', driver)" data-toggle="tooltip" title="Delete Form">
-               <span class="glyphicon glyphicon-trash"></span>
-             </button>
              <a ui-sref="view-form({formObj: {{driver}}, formType: 'volunteerapp'})" class="btn btn-info btn-sm" data-toggle="tooltip" title="View details">
                <span class="glyphicon glyphicon-eye-open"></span>
              </a>
              <button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" title="Download PDF" ng-click="base64ToPDF('volunteerapp', driver)">
                <span class="glyphicon glyphicon-download"></span>
              </button>
+             <br>
+             <button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" title="Generate new PDF" ng-click="regenerateMultiPagePDF(driver, 'volunteerapp')">
+               <span class="glyphicon glyphicon-repeat"></span>
+             </button>
+             <button type="button" class="btn btn-danger btn-sm" ng-click="askBeforeDelete('volunteerapp', driver)" data-toggle="tooltip" title="Delete Form">
+              <span class="glyphicon glyphicon-trash"></span>
+            </button>
             </td>
           </tr>
         </tbody>
@@ -112,7 +124,9 @@
         <thead>
           <tr>
             <th>Count</th>
-            <th>Date Submited</th>
+            <th ng-click="sort('date')">Date Submited
+              <span class="glyphicon sort-icon" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+            </th>
             <th ng-click="sort('lastName')">Rider Name
               <span class="glyphicon sort-icon" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
             </th>
@@ -122,22 +136,23 @@
           </tr>
         </thead>
         <tbody>
-          <tr dir-paginate="nonrider in nonRiderFormData|orderBy:sortKey:reverse|filter:filterTable3|itemsPerPage:10" pagination-id="nonrider">
+          <tr dir-paginate="nonrider in nonRiderFormData|orderBy:sortKey:reverse|filter:filterTable3|itemsPerPage:10|reverse" pagination-id="nonrider">
             <td>{{nonRiderFormData.length - $index}}</td>
             <td>{{nonrider | timestamp | date}}</td>
             <td>{{nonrider.firstName}} {{nonrider.lastName}}</td>
             <td>{{nonrider.address1}}, {{nonrider.city}}, {{nonrider.state}} {{nonrider.zip}}</td>
             <td>{{nonrider.phone}}</td>
             <td>
-              <button type="button" class="btn btn-danger btn-sm" ng-click="deleteForm('nonriderapp', nonrider)" data-toggle="tooltip" title="Delete Form">
-               <span class="glyphicon glyphicon-trash"></span>
-             </button>
              <a ui-sref="view-form({formObj: {{nonrider}}, formType: 'nonriderapp'})" class="btn btn-info btn-sm" data-toggle="tooltip" title="View details">
                <span class="glyphicon glyphicon-eye-open"></span>
              </a>
              <button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" title="Download PDF" ng-click="base64ToPDF('nonriderapp', nonrider)">
                <span class="glyphicon glyphicon-download"></span>
              </button>
+             <br>
+             <button type="button" class="btn btn-danger btn-sm" ng-click="askBeforeDelete('nonriderapp', nonrider)" data-toggle="tooltip" title="Delete Form">
+              <span class="glyphicon glyphicon-trash"></span>
+            </button>
             </td>
           </tr>
         </tbody>
@@ -158,7 +173,9 @@
         <thead>
           <tr>
             <th>Count</th>
-            <th>Date Submited</th>
+            <th ng-click="sort('date')">Date Submited
+              <span class="glyphicon sort-icon" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+            </th>
             <th ng-click="sort('name')">Rider Name
               <span class="glyphicon sort-icon" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
             </th>
@@ -168,19 +185,19 @@
           </tr>
         </thead>
         <tbody>
-          <tr dir-paginate="person in contactFormData|orderBy:sortKey:reverse|filter:filterTable4|itemsPerPage:10" pagination-id="contact">
+          <tr dir-paginate="person in contactFormData|orderBy:sortKey:reverse|filter:filterTable4|itemsPerPage:10|reverse" pagination-id="contact">
             <td>{{contactFormData.length - $index}}</td>
             <td>{{person | timestamp | date}}</td>
             <td>{{person.name}}</td>
             <td>{{person.phone}}</td>
             <td><strong>{{person.subject}}</strong></td>
             <td>
-              <button type="button" class="btn btn-danger btn-sm" ng-click="deleteForm('contactform', person)" data-toggle="tooltip" title="Delete Form">
-               <span class="glyphicon glyphicon-trash"></span>
-             </button>
              <a ui-sref="view-form({formObj: {{person}}, formType: 'contactform'})" class="btn btn-info btn-sm" data-toggle="tooltip" title="View details">
                <span class="glyphicon glyphicon-eye-open"></span>
              </a>
+             <button type="button" class="btn btn-danger btn-sm" ng-click="askBeforeDelete('contactform', person)" data-toggle="tooltip" title="Delete Form">
+              <span class="glyphicon glyphicon-trash"></span>
+            </button>
             </td>
           </tr>
         </tbody>
@@ -205,7 +222,9 @@
         <thead>
           <tr>
             <th>Count</th>
-            <th>Date Submited</th>
+            <th ng-click="sort('date')">Date Submited
+              <span class="glyphicon sort-icon" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+            </th>
             <th ng-click="sort('email')">Email
               <span class="glyphicon sort-icon" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
             </th>
@@ -213,12 +232,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr dir-paginate="person in newsletterFormData|orderBy:sortKey:reverse|filter:filterTable5|itemsPerPage:10" pagination-id="newsletter">
+          <tr dir-paginate="person in newsletterFormData|orderBy:sortKey:reverse|filter:filterTable5|itemsPerPage:10|reverse" pagination-id="newsletter">
             <td>{{newsletterFormData.length - $index}}</td>
             <td>{{person | timestamp | date}}</td>
             <td>{{person.email}}</td>
             <td>
-              <button type="button" class="btn btn-danger btn-sm" ng-click="deleteForm('newsletterform', person)" data-toggle="tooltip" title="Delete Form">
+              <button type="button" class="btn btn-danger btn-sm" ng-click="askBeforeDelete('newsletterform', person)" data-toggle="tooltip" title="Delete Form">
                <span class="glyphicon glyphicon-trash"></span>
              </button>
              <a ui-sref="view-form({formObj: {{person}}, formType: 'newsletterform'})" class="btn btn-info btn-sm" data-toggle="tooltip" title="View details">
@@ -243,6 +262,29 @@
     
   </div><!--row-->
   
+  <!-- Modal -->
+<div class="modal fade" id="deleteAppModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="font-size:25px">
+      <div class="modal-header" style="background:#529ba8;color:white">
+        <h3 class="modal-title" id="exampleModalLabel">Delete form submission</h3>
+        <button type="button" style="margin-top: -30px" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="form-group ta-center">
+            <label for="delete app confirmation" style="margin-bottom:15px">Are you sure you would like to delete this form?</label>
+          </div> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" ng-click="deleteForm(formType, formData)" class="btn btn-lg btn-danger" style="background:#e05944">Delete</button>
+        <button type="button" class="btn btn-lg btn-secondary" data-dismiss="modal" aria-label="Cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div><!--end modal-->
+  
   
 </div><!--container-->
 
@@ -253,6 +295,11 @@ $(document).ready(function(){
 </script>
 
 <style>
+  .btn-sm {
+    font-size:16px !important;
+    padding: 5px 10px !important;
+    margin: 3px !important;
+  }
   .dashboard .row .col-md-6 {padding:2%}
   .dashboard tr td {max-width:150px}
   .dashboard a {
