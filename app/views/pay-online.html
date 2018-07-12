@@ -26,34 +26,14 @@
         
         
         <div class="col-sm-offset-1 col-sm-6 pay-online-form">
-          <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-          	<input name="cmd" type="hidden" value="_s-xclick" /> <input name="hosted_button_id" type="hidden" value="23LUDK8MLDV5W" />
-          	<table class="col-sm-6">
-          		<tbody>
-          			<tr>
-          				<td>
-          					<input name="on0" type="hidden" value="Payment Type" /><strong>Payment Type</strong></td>
-          			</tr>
-          			<tr>
-          				<td>
-          					<select name="os0">
-                      <option value="Membership">Membership</option>
-                      <option value="Pay My Bill">Pay My Bill</option>
-                      <option value="Add Gift Certificate">Add Gift Certificate</option>
-                    </select>
-                  </td>
-          			</tr>
-          			<tr>
-          				<td>
-          					<input name="on1" type="hidden" value="Rider Name" /><strong>Rider Name</strong></td>
-          			</tr>
-          			<tr>
-          				<td>
-          					<input class="rider-name" maxlength="200" name="os1" required="" type="text" /></td>
-          			</tr>
-          		</tbody>
-          	</table>
-          	<input class="col-sm-6 paypal" alt="PayPal - The safer, easier way to pay online!" border="0" name="submit" src="http://itnamerica.org/wp-content/uploads/2018/01/PayPal-PayNow-Button.png" type="image" /> <img alt="" border="0" height="1" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" /></form>
+          <form>
+          <p><strong>
+            Mail your check to:<br>
+            ITN<em>{{affiliate}}</em><br>
+            50 South Main St., Room 216<br>
+            West Hartford, CT 06107
+          </strong></p>
+          </form>
           <p>&nbsp;</p>
         </div>
       </div><!--row-->

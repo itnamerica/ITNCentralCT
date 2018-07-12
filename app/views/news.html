@@ -32,7 +32,7 @@
           </ul>
           
           <ul>
-            <u>ITN<em>CentralCT</em> on TurleyCT:</u>
+            <u>ITN<em>CentralCT</em> in the local press (March 2018):</u>
             <li class="wow fadeInUp"><a ng-click="redirectToURL(assetsPath + '/images/docs/newsletter/cromwell-life.pdf')">Cromwell LIFE: pages 15-17</a></li>
             <li class="wow fadeInUp"><a ng-click="redirectToURL(assetsPath + '/images/docs/newsletter/newington-life.pdf')">Newington LIFE: pages 14-15</a></li>
             <li class="wow fadeInUp"><a ng-click="redirectToURL(assetsPath + '/images/docs/newsletter/rockyhill-life.pdf')">Rocky Hill LIFE: pages 19-21</a></li>
@@ -83,5 +83,8 @@
   
   
   <script>
-  new WOW().init();
+  $(document).ready(function(){
+    new WOW().init();
+    $('#myModal').modal('show');
+  })
   </script>
