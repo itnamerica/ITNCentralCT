@@ -1756,6 +1756,15 @@ h2,h3 {line-height:1.7}
   font-size:50px !important;
   color: red !important;
 }
+.slick-prev:hover, .slick-next:hover {
+  height:100%;
+  width:100%;
+  left:52%;
+  top: 54%;
+}
+.slick-prev:hover {
+  left:-50%;
+}
 
 
 /* RESPONSIVE */
