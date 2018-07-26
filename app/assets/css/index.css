@@ -1348,8 +1348,8 @@ form textarea.form-control {font-size:25px}
 .member-app .checkbox-inline, .volunteer-app .checkbox-inline {line-height: 1}
 #pdfVersion {
   display:none;
-  padding: 5%;
-  font-size:14px;
+  padding: 2%;
+  font-size:10px;
 };
 #pdfVersion label {margin-right: 15px;}
 .volunteer-drive {
