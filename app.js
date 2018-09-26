@@ -12,6 +12,7 @@ var env = require(__dirname + '/env-vars.js');
 var gmail_login = env.gmail_login;
 var gmail_pass = env.gmail_pass;
 var db;
+var db2;
 // var router = express.Router();
 
 
@@ -27,6 +28,7 @@ MongoClient.connect('mongodb://itnadmin:itnUser0136!@ds153700.mlab.com:53700/itn
     console.log('db not connecting, but inside mongo block', err);
   };
   db = client.db('itncentralct');
+  console.log('mongo db call 1');
   
   
   app.get('/getMemberApps', function (req,res) {
@@ -92,21 +94,22 @@ MongoClient.connect('mongodb://itnadmin:itnUser0136!@ds153700.mlab.com:53700/itn
 });//end of mongoclient
 
 
-// 
-// app.get('/getAllRides', function (req,res) {
-// 
-//   MongoClient.connect('mongodb://itnadmin:itnUser0136!@ds119442.mlab.com:19442/itnamerica-new', function(err, client) {
-//     if (err) { 
-//       console.log('db itnamerica not connecting, but inside mongo block:', err);
-//     };
-//     db = client.db('itnamerica-new');
-//     db.collection('ridesdatamonthly').find().toArray(function (err, result) {
-//       console.log('result is ', result);
-//       res.send(result);
-//     })
-//   });
-// 
-// }); // end of /getRidesData get request
+
+app.get('/getAllRides', function (req,res) {
+
+  MongoClient.connect('mongodb://itnadmin:itnUser0136!@ds119442.mlab.com:19442/itnamerica-new', function(err, client) {
+    console.log('mongo db call itnamerica');
+    if (err) { 
+      console.log('db itnamerica not connecting, but inside mongo block:', err);
+    };
+    db2 = client.db('itnamerica-new');
+    db2.collection('ridesdatamonthly').find().toArray(function (err, result) {
+      console.log('result is ', result);
+      res.send(result);
+    })
+  });
+
+}); // end of /getRidesData get request
 
 
 
@@ -169,6 +172,7 @@ app.post('/sendmail', function(req, res){
         console.log('db not connecting, but inside mongo block', err);
       };
       db = client.db('itncentralct');
+      console.log('mongo db call 2');
 
       
       var objWithPDF; var pdfVal;
